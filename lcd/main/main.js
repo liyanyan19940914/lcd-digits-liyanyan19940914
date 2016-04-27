@@ -2,54 +2,46 @@ function printLcd(input){
     
     var allLcds=loadAllLcds();
     
-    var numArray=buildArray(input);
+    var numberArray=buildArray(input);
     
-    var lcdArray=buildLcdArray(numArray,allLcds);
+    var lcdArray=buildLcdArray(numberArray,allLcds);
     
-    var Lcd=toLcd(lcdArray);
-    console.log(Lcd);
+    toLcd(lcdArray);
 }
 
 function buildArray(input) {
-    
-    var numArray=[];
-
     input += '';
+
+    var numberArray=input.split('');
     
-    var newArray=input.split('');
-    
-    for(var i=0;i<newArray.length;i++){
-        numArray.push(parseInt(newArray[i]));
+    for(var i=0;i<numberArray.length;i++){
+        numberArray[i]=parseInt(numberArray[i]);
     }
     
-    return numArray;
+    return numberArray;
 }
 
-function buildLcdArray(numArray,allLcds) {
+function buildLcdArray(numberArray,allLcds) {
     
     var lcdArray=[];
-    
-    for(var i=0;i<numArray.length;i++){
-        lcdArray.push(allLcds[numArray[i]]);
+
+    for (var j = 0; j < allLcds.length; j++) {
+        lcdArray[j] = '';
+        for (var i = 0; i < numberArray.length; i++) {
+            lcdArray[j] += allLcds[j][numberArray[i]];
+        }
     }
-    
+
     return lcdArray;
 }
 
 function toLcd(lcdArray) {
-    
+
     var print='';
-    for(var i=0;i<lcdArray.length;i++) {
-        for (var j = 0; j < lcdArray.length; j++) {
-            print += lcdArray[j][i];
-            if (j === 2 && i!=2) {
-                print += '\n';
-            }
-            else {
-                print += ' ';
-            }
-        }
+
+    for(var i=0;i<lcdArray.length;i++){
+        print+=(lcdArray[i]+'\n');
     }
     
-    return print;
+    console.log(print);
 }

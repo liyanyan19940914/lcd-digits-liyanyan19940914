@@ -11,20 +11,20 @@ describe('lcd-digits',function () {
             input=910;
             
             it('return correct numArray',function () {
-                var numArray=[9,1,0];
-                expect(buildArray(input)).toEqual(numArray);
+                var numberArray=[9,1,0];
+                expect(buildArray(input)).toEqual(numberArray);
             });
         });
         
         describe('test buildLcdArray function',function () {
-            var numArray;
+            var numberArray;
             beforeEach(function () {
-                numArray=[9,1,0];
+                numberArray=[9,1,0];
             });
             
             it('return correct lcdArray',function () {
-                var lcdArray=[['._.','|_|','..|'],['...','..|','..|'],['._.','|.|','|_|']];
-                expect(buildLcdArray(numArray,allLcds)).toEqual(lcdArray);
+                var lcdArray=['._. ... ._. ','|_| ..| |.| ','..| ..| |_| '];
+                expect(buildLcdArray(numberArray,allLcds)).toEqual(lcdArray);
             });
         });
     });
@@ -39,7 +39,7 @@ describe('lcd-digits',function () {
         it('should print correct text',function () {
             spyOn(console, 'log');
             printLcd(input);
-            var expectText='._. ... ._.\n'+'|_| ..| |.|\n'+'..| ..| |_| ';
+            var expectText='._. ... ._. \n'+'|_| ..| |.| \n'+'..| ..| |_| \n';
             expect(console.log).toHaveBeenCalledWith(expectText);
         });
     });
